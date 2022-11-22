@@ -1,0 +1,441 @@
+<div class="container">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs align-items-center">
+    <li [ngbNavItem]="1">
+      <div class="logo">
+        <i class="fa fa-file-image-o logo-icon" aria-hidden="true"></i>
+            </div>
+      <ng-template ngbNavContent class="bg-dark">
+        <ngb-carousel class="text-center H300 myCarousel" *ngIf="images">
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <!-- carouselImg -->
+                      <i class="fa fa-file-image-o carouselImg" aria-hidden="true"></i>
+            </div>
+            <div class="carousel-caption">
+              <h3>First Image label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <i class="fa fa-file-image-o carouselImg" aria-hidden="true"></i>
+                        </div>
+            <div class="carousel-caption">
+              <h3>Second Image label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                      <i class="fa fa-file-image-o carouselImg" aria-hidden="true"></i>
+            </div>
+            <div class="carousel-caption">
+              <h3>Third Image label</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+
+        <table class="table table-striped container">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Country</th>
+            <th scope="col">Area</th>
+            <th scope="col">Population</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let country of countries$ | async; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+              <ngb-highlight [result]="country.name" [term]="filter.value"></ngb-highlight>
+            </td>
+            <td><ngb-highlight [result]="country.area | number" [term]="filter.value"></ngb-highlight></td>
+            <td><ngb-highlight [result]="country.population | number" [term]="filter.value"></ngb-highlight></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 news-cards">
+          <div class="col">
+            <div class="card h-100">
+              <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, eligendi qui. Repellendus voluptate excepturi reiciendis, optio ullam sequi inventore quis repudiandae recusandae velit deserunt voluptatem dolorum facilis, perspiciatis delectus maiores?</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aperiam officiis saepe, possimus veritatis, vero, atque magni voluptates quos consectetur deserunt quia perspiciatis expedita distinctio ut porro alias molestiae dicta?</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nesciunt repellendus natus magnam quasi fugit quaerat veniam totam amet illo pariatur, distinctio architecto placeat nobis laboriosam, ratione tenetur, facere rem?</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="container">
+          <button type="button" class="btn btn-outline-primary mt-5" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseExample">
+            Toggle this advertisment
+          </button>
+        </p>
+        <div class="card mb-3 container" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+          <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+          <div class="card-body">
+            <h5 class="card-title">Title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, eligendi qui. Repellendus voluptate excepturi reiciendis, optio ullam sequi inventore quis repudiandae recusandae velit deserunt voluptatem dolorum facilis, perspiciatis delectus maiores?</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+
+
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink><span class="text-bolder">Home</span></a>
+      <ng-template ngbNavContent>
+        <ngb-carousel class="text-center H300 bg-dark" *ngIf="images">
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <i class="fa fa-file-image-o carouselImg" aria-hidden="true"></i>
+            </div>
+            <div class="carousel-caption">
+              <h3>First Image label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <i class="fa fa-file-image-o carouselImg" aria-hidden="true"></i>
+            </div>
+            <div class="carousel-caption">
+              <h3>Second Image label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <i class="fa fa-file-image-o carouselImg" aria-hidden="true"></i>
+            </div>
+            <div class="carousel-caption">
+              <h3>Third Image label</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+
+        <table class="table table-striped container">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Country</th>
+            <th scope="col">Area</th>
+            <th scope="col">Population</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let country of countries$ | async; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+              <ngb-highlight [result]="country.name" [term]="filter.value"></ngb-highlight>
+            </td>
+            <td><ngb-highlight [result]="country.area | number" [term]="filter.value"></ngb-highlight></td>
+            <td><ngb-highlight [result]="country.population | number" [term]="filter.value"></ngb-highlight></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 news-cards">
+          <div class="col">
+            <div class="card h-100">
+              <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, eligendi qui. Repellendus voluptate excepturi reiciendis, optio ullam sequi inventore quis repudiandae recusandae velit deserunt voluptatem dolorum facilis, perspiciatis delectus maiores?</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum odio hic corrupti, ut veritatis nesciunt error, eos omnis illo praesentium dolore quos consequuntur delectus. Cupiditate voluptates expedita inventore ducimus exercitationem?</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum deleniti minus consectetur? Provident deserunt, consectetur est, recusandae nemo nihil quo libero totam at animi voluptatibus vel? Ipsam optio ad illo?</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="container">
+          <button type="button" class="btn btn-outline-primary mt-5" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseExample">
+            Toggle this advertisment
+          </button>
+        </p>
+        <div class="card mb-3 container" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+          <i class="fa fa-file-image-o card-img-top card-icon" aria-hidden="true"></i>
+          <div class="card-body">
+            <h5 class="card-title">Title</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, eligendi qui. Repellendus voluptate excepturi reiciendis, optio ullam sequi inventore quis repudiandae recusandae velit deserunt voluptatem dolorum facilis, perspiciatis delectus maiores?</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+
+              </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink><span class="text-bolder">Contact us</span></a>
+
+      <ng-template ngbNavContent>
+        <div class="container contact-bg">
+
+          <h2 class="mt-5 text-center">Contact us</h2>
+
+          <br>
+
+
+          <form class="form-img">
+            <div class="form-group">
+              <label for="exampleInputEmail1"><span class="bg-light">Email address</span></label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+              <small id="emailHelp" class="form-text text-muted"><span class="bg-light">Your emial will not be shown by others.</span></small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1"><span class="bg-light">Password</span></label>
+              <input type="password" class="form-control" id="exampleInputPassword1" required >
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1"><span class="bg-light">Comment</span></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            <button type="submit" class="btn btn-outline-info bg-light">Submit</button>
+          </form>
+          <br>
+          <br>
+        </div>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="4" >
+      <a ngbNavLink><span class="text-bolder">Privacy policy</span></a>
+      <ng-template ngbNavContent>
+        <h1 class="text-center H300 copy-right">Privacy policy</h1>
+        <p class="Privacy">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat facere eius rem veniam. Pariatur cum, neque dolorem, reiciendis facilis officia tempore, atque repellat rem nam excepturi aperiam! Ipsa, voluptatibus!
+        </p>
+      </ng-template>
+    </li>
+
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+
+
+<footer class="bg-dark text-white">
+  <!-- Grid container -->
+  <div class="container p-4 footer-text">
+    <!-- Section: Social media -->
+    <section class="mb-4 text-center H300 copy-right">
+      <!-- Facebook -->
+      <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fa fa-facebook" aria-hidden="true"></i>
+      </a>
+
+      <!-- Twitter -->
+      <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+
+      <!-- Google -->
+      <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fa fa-google-plus" aria-hidden="true"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fa fa-instagram" aria-hidden="true"></i>
+      </a>
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button mdbRipple type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+        eum harum corrupti dicta, aliquam sequi voluptate quas.
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center H300 p-3 copy-right" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright :
+    <a class="text-white" href="#"> Lorem.com </a>
+  </div>
+  <!-- Copyright -->
+</footer>
